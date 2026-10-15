@@ -1,0 +1,99 @@
+# ==============================================================================
+# TrueFrame AI — Production .gitignore
+# Digital Media Forensics Platform (Semester 8 Major Project)
+# ==============================================================================
+
+# Operating System & Sync Conflicts (Specifically OneDrive on Windows)
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+.DS_Store
+
+# Python & Virtual Environments
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+.venv/
+venv/
+ENV/
+env/
+backend/.venv/
+
+# Testing & Coverage
+.pytest_cache/
+.coverage
+htmlcov/
+.mypy_cache/
+.ruff_cache/
+
+# Node.js & React Frontend
+node_modules/
+frontend/node_modules/
+frontend/dist/
+frontend/dist-ssr/
+*.local
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Environment & Secrets (Never commit secrets)
+.env
+.env.*
+!.env.example
+backend/.env
+frontend/.env
+*.pem
+*.key
+
+# Machine Learning Weights & Large Forensic Media
+# Models and heavy artifacts must be downloaded or pulled from external releases
+*.pt
+*.pth
+*.onnx
+*.bin
+*.h5
+*.weights
+models/weights/*
+!models/weights/.gitkeep
+
+# Forensic Storage & Ephemeral Media Caches
+storage/temp/*
+!storage/temp/.gitkeep
+media/
+backend/media/
+*.mp4
+*.avi
+*.mov
+*.mkv
+*.webm
+
+# Databases
+*.db
+*.sqlite
+*.sqlite3
+backend/*.db
+
+# IDE & Editor Files
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
