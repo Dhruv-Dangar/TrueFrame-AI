@@ -3,6 +3,7 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from src.config import settings
 from src.api.routes.health import router as health_router
+from src.api.routes.analyze import router as analyze_router
 
 
 @asynccontextmanager
@@ -11,7 +12,6 @@ async def lifespan(app: FastAPI):
     # Ensure ephemeral storage directory exists
     settings.storage_path.mkdir(parents=True, exist_ok=True)
     yield
-    # Clean shutdown tasks can go here
 
 
 def create_app() -> FastAPI:
@@ -36,6 +36,7 @@ def create_app() -> FastAPI:
 
     # Register API Routers under /api/v1 prefix
     app.include_router(health_router, prefix="/api/v1")
+    app.include_router(analyze_router, prefix="/api/v1")
 
     @app.get("/", tags=["Root"])
     async def root():
@@ -44,6 +45,9 @@ def create_app() -> FastAPI:
             "version": settings.app_version,
             "documentation": "/docs",
             "health": "/api/v1/health/live",
+            "endpoints": {
+                "analyze_image": "/api/v1/analyze/image",
+            },
         }
 
     return app
